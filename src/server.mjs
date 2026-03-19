@@ -6,10 +6,16 @@ const middlewares = jsonServer.defaults({
   noCors: true
 });
 const port = process.env.PORT || 3131;
-server.use(middlewares);
+
 server.use(jsonServer.rewriter({
   '/api/*': '/$1'
 }));
+
+server.use(middlewares);
+
+server.get('*', (req, res) => {
+  res.sendFile(process.cwd() + '/build/index.html');
+});
 
 server.use(router);
 server.listen(port);
