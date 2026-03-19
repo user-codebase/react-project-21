@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllTables, fetchTables, fetchTablesSuccess } from '../../redux/tablesRedux';
 import { Form, Button } from 'react-bootstrap';
+import { API_URL } from '../config';
 
 const STATUS_OPTIONS = ['Free', 'Reserved', 'Busy', 'Cleaning'];
 
@@ -96,7 +97,7 @@ const Table = () => {
     };
 
     try {
-      const res = await fetch(`http://localhost:3131/api/tables/${id}`, {
+      const res = await fetch(`${API_URL}/tables/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedTable),
