@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllTables, fetchTables, fetchTablesSuccess } from '../../redux/tablesRedux';
 import { Form, Button } from 'react-bootstrap';
-import { API_URL } from '../config';
+import { API_URL } from '../../config';
 
 const STATUS_OPTIONS = ['Free', 'Reserved', 'Busy', 'Cleaning'];
 
