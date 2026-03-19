@@ -1,16 +1,13 @@
 import jsonServer from 'json-server';
 import path from 'path';
+
 const server = jsonServer.create();
 const router = jsonServer.router('build/db/app.json');
-const middlewares = jsonServer.defaults({
-  static: 'build',
-  noCors: true
-});
+const middlewares = jsonServer.defaults({ static: 'build', noCors: true });
+
 const port = process.env.PORT;
 
-server.use(jsonServer.rewriter({
-  '/api/*': '/$1'
-}));
+server.use(jsonServer.rewriter({ '/api/*': '/$1' }));
 
 server.use(middlewares);
 
@@ -22,4 +19,7 @@ server.get('*', (req, res, next) => {
 });
 
 server.use(router);
-server.listen(port);
+
+server.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
+});
