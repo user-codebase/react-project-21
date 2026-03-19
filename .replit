@@ -45,6 +45,6 @@ localPort = 5000
 externalPort = 5000
 
 [deployment]
-deploymentTarget = "autoscale"
-run = ["node", "server.mjs"]
+deploymentTarget = "cloudrun"
+run = ["sh", "-c", "yarn start"]
 build = ["npm", "run", "build"]
