@@ -20,7 +20,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "npm-run-all -p start:*",
+    "start": "node server.mjs",
     "start:react": "react-scripts start",
     "start:server": "node server.mjs",
     "prebuild": "node prebuild.js",
