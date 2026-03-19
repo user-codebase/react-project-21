@@ -1,4 +1,5 @@
 import jsonServer from 'json-server';
+import path from 'path';
 const server = jsonServer.create();
 const router = jsonServer.router('build/db/app.json');
 const middlewares = jsonServer.defaults({
@@ -13,8 +14,11 @@ server.use(jsonServer.rewriter({
 
 server.use(middlewares);
 
-server.get('*', (req, res) => {
-  res.sendFile(process.cwd() + '/build/index.html');
+server.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api') || req.path.includes('.')) {
+    return next();
+  }
+  res.sendFile(path.resolve('build/index.html'));
 });
 
 server.use(router);
