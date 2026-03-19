@@ -16,7 +16,7 @@ A React web application for managing restaurant tables. Users can view and manag
   - `components/views/` - Layout components (Header, Footer, NavBar)
   - `redux/` - Redux store, reducers, thunks
   - `config.js` - API URL configuration
-  - `server.mjs` - Production server (serves built app + json-server together)
+- `server.mjs` - Production server at project root (serves built app + json-server together)
 - `public/db/app.json` - Mock database file
 - `public/db/routes.json` - json-server route rewriting (`/api/*` → `/$1`)
 
@@ -31,7 +31,7 @@ The workflow runs `npm start` which uses `npm-run-all` to concurrently start:
 
 ## Production (Deployment)
 - Build: `npm run build` (also copies db file to build/db/ via prebuild script)
-- Run: `node src/server.mjs` (serves built React app + json-server on PORT env var, default 3131)
+- Run: `node server.mjs` (serves built React app + json-server on PORT env var, default 3131)
 
 ## Key Fix Applied
 - `redux-thunk` v3 uses named export: changed `import thunk from 'redux-thunk'` to `import { thunk } from 'redux-thunk'` in `src/redux/store.js`
